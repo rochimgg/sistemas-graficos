@@ -44,3 +44,6 @@ Temporary Items
 
 # Scripts that are used to solve exercices
 filters/*
+
+npm-debug.log
+*.png
