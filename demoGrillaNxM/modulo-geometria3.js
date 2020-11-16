@@ -12,16 +12,16 @@
 
     3) Crear nuevos tipos funciones constructoras de superficies
 
-        3a) Crear la función constructora "Esfera" que reciba como parámetro el radio ok
+        3a) Crear la función constructora "Esfera" que reciba como parámetro el radio
 
-        3b) Crear la función constructora "TuboSenoidal" que reciba como parámetro la amplitud de onda, longitud de onda, radio del tubo y altura. ok
+        3b) Crear la función constructora "TuboSenoidal" que reciba como parámetro la amplitud de onda, longitud de onda, radio del tubo y altura.
         (Ver imagenes JPG adjuntas)
         
         
     Entrega:
     -------
 
-    - Agregar una variable global que permita elegir facilmente que tipo de primitiva se desea visualizar [plano,esfera,tubosenoidal] ok
+    - Agregar una variable global que permita elegir facilmente que tipo de primitiva se desea visualizar [plano,esfera,tubosenoidal]
     
 */
 
@@ -35,16 +35,8 @@ var columnas=100;
 
 function crearGeometria(){
         
-    if(primitiva == "plano"){
-        superficie3D=new Plano(3,3);
-    }
-    if(primitiva == "esfera"){
-        superficie3D=new Esfera(2);
-    }
-    if(primitiva == "tuboSenoidal"){
-        superficie3D=new TuboSenoidal(0.1,0.1,0.5,1);
-    }
 
+    superficie3D=new TuboSenoidal(0.1,0.1,0.5,1);
     mallaDeTriangulos=generarSuperficie(superficie3D,filas,columnas);
     
 }
@@ -66,24 +58,6 @@ function Plano(ancho,largo){
 
     this.getNormal=function(u,v){
         return [0,1,0];
-    }
-
-    this.getCoordenadasTextura=function(u,v){
-        return [u,v];
-    }
-}
-
-function Esfera(radio){
-
-    this.getPosicion=function(u,v){
-        var x=radio*Math.cos(Math.PI*(u-.5))*Math.cos(2*Math.PI*v);
-        var y=radio*Math.cos(Math.PI*(u-.5))*Math.sin(2*Math.PI*v);
-        var z=radio*Math.sin(Math.PI*(u-.5));
-        return [x,y,z];
-    }
-
-    this.getNormal=function(u,v){
-        return this.getPosicion(u,v)
     }
 
     this.getCoordenadasTextura=function(u,v){
@@ -194,10 +168,8 @@ function generarSuperficie(superficie,filas,columnas){
     }
 }
 
-function dibujarMalla(){
-
-    crearGeometria()
-
+function dibujarMalla(mallaDeTriangulos){
+    
     // Se configuran los buffers que alimentaron el pipeline
     gl.bindBuffer(gl.ARRAY_BUFFER, mallaDeTriangulos.webgl_position_buffer);
     gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, mallaDeTriangulos.webgl_position_buffer.itemSize, gl.FLOAT, false, 0, 0);
