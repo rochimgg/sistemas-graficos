@@ -1,0 +1,104 @@
+<!DOCTYPE html>	
+<html>
+<style>
+
+
+	body{
+		background-color:#CCCCCC;
+		font-family:arial;
+		font-size:16px;
+		
+	}
+
+	#container{
+	}
+
+	#svg{
+		background-image: url("s.png");	
+		border:1px solid black;
+        display: inline-block;
+		
+		
+	}
+
+	#info{
+        padding: 30px;
+        vertical-align: top;;       
+        min-width: 200px;;
+        
+		
+		border:1px solid black;
+        display: inline-block;
+	}
+    #container{
+        display: block;
+        text-align: center;
+    }
+</style>
+<script src="js/jquery.min.js"></script>
+
+<body>
+
+	
+    <div id="container">
+	<svg  id="svg" width="800" height="800" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" fill="transparent">
+	
+		  <!-- Dibuja una curva Bezier cubica -->
+          <!-- <path d="M 100 100 C 100 500, 700 500, 700 100" stroke="red" fill="transparent"/> -->
+
+          <path d="M 600 -15
+          C 600 -15, 582 -15,  582 -15
+          C 570 30,  559 30,   485 0
+          C 275 -80, 60 185,   400 351
+          C 810 535, 300 785,  246 427
+          C 246 427, 230 427,  230 427
+          C 230 427, 230 643,  230 643
+          C 230 643, 247 643,  247 643
+          C 259 599, 270 599,  326 621
+          C 570 730, 835 430,  450 264
+          C 60 85,   540 -140, 583 205
+          C 583 205, 600 205,  600 205 Z
+
+
+
+" stroke="red" fill="transparent"/>
+		  <!-- Dibuja el grafo de control !-->
+		  <path d="M 600 -15
+		  L 600 -15 L 582 -15  L 582 -15
+		  L 570 29  L 559 30   L 485 0
+          L 275 -80 L 60 185   L 399 351
+          L 810 535 L 300 785  L 246 427
+          L 246 427 L 230 427  L 230 427
+          L 230 427 L 230 643  L 230 643
+          L 230 643 L 247 643  L 247 643
+          L 259 599 L 270 599  L 326 621
+          L 570 730 L 835 430  L 450 264
+          L 60 85   L 540 -140 L 583 205
+          L 583 205 L 600 205  L 600 205 Z
+
+
+" stroke="blue" fill="transparent"/>
+	
+	</svg>	
+        <div id="info">
+        -
+        </div>
+        <br>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths">Referencia: SVG Paths<a/>
+    </div>
+
+    <script>
+
+        $("#svg").mousemove(function(e){
+        
+            var x=e.pageX-746;
+            var y=e.pageY-12+3-100;
+            
+            $("#info").html("x:"+x+" y:"+y);
+        });
+
+    </script>
+
+</body>
+</html>
+
